@@ -1,11 +1,11 @@
 <?php
     $login_code= isset($_REQUEST['login']) ? $_REQUEST['login'] : '1';
     if($login_code=="false"){
-        $login_message="Wrong Credentials !";
+        $login_message="El usuario o contraseña es incorrecto";
         $color="red";
     }
     else{
-        $login_message="Please Login!";
+        $login_message="Introduce tu usuario y contraseña";
         $color="green";
     }
 ?>
@@ -20,19 +20,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <head>
         <meta charset="UTF-8">
-	        <script src="source/js/loginValidate.js"></script>
-            <title>School Management System</title>
+        <script src="source/js/loginValidate.js"></script>
+        <title>School Management System</title>
     </head>
     <body>
         <center>
             <img width="300" height="300" src="source/images/logo.png" />
             <hr/>
             <?php echo "<font size='4' color='$color'>$login_message</font>";?>
-            <form  action="service/check.access.php" onsubmit="return loginValidate();" method="post"><br/>
+            <form action="service/checkAccess.php" onsubmit="return loginValidate();" method="post"><br/>
                 <input type="text" id="myid" name="myid" placeholder="your id" autofocus=""   /><br/><br/><br/>
                 <input type="password" id="mypassword" name="mypassword" placeholder="your password"  /><br/><br/><br/>
                 <button type="submit" value="Login" class="btn btn-primary">Login</button>
             </form>
+            <div>
+                <div>Para loguearse como admin  </div>
+                <div>user:admin pass:123 </div>
+            </div>
         </center>
     </body>
 </html>

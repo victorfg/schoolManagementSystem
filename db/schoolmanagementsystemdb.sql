@@ -124,6 +124,9 @@ CREATE TABLE `users_admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `users_admin` (`id_user_admin`, `username`, `name`, `email`, `password`) VALUES
+('ad-123-0', 'admin', 'testName', 'prosen@example.com', '123');
+
 --
 -- Indexos per taules bolcades
 --
