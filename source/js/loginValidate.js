@@ -32,10 +32,10 @@ function loginValidate() {
             else {
                 $(this).removeClass('has-val');
             }
-        })    
+        })
     })
-  
-  
+
+
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
@@ -56,14 +56,14 @@ function loginValidate() {
 
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
-           hideValidate(this);
+            hideValidate(this);
         });
     });
 
     function validate (input) {
         if($(input).val().trim() == ''){
             return false;
-        } 
+        }
     }
 
     function showValidate(input) {
@@ -77,6 +77,6 @@ function loginValidate() {
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
+
 
 })(jQuery);

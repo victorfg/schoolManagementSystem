@@ -29,7 +29,7 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form action="service/checkAccess.php" onsubmit="return loginValidate();" method="post" class="login100-form validate-form">                        
+                    <form action="source/Controllers/LoginController.php" onsubmit="return loginValidate();" method="post" class="login100-form validate-form">
                         <h1 class="flex-1">School Management System</h1>
                         <?php echo "<div class='margin-top-15'><font size='4' color='$color'>$login_message</font></div>";?>
                         <div class="margin-top-15 wrap-input100 validate-input" data-validate = "el nombre de usuario es obligatorio">
