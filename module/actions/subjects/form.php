@@ -1,30 +1,52 @@
+<?php
+include_once('../../../service/mysqlConection.php');
+if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
+    echo "no tienes acceso";
+    return;
+}
+$id=$_GET['id_subject'];
+
+$id=stripslashes($id);
+
+$specified = !empty($id);
+if($specified) {
+    $sql = "SELECT * FROM subjects WHERE 
+    id_subject = {$id}";
+}
+
+$result = mysqli_query($link, $sql);
+$rows=mysqli_fetch_array($result);
+
+
+$sqlTeacher = "SELECT * FROM users WHERE 
+type = 'teacher'";
+
+
+$resultTeacher = mysqli_query($link, $sqlTeacher);
+$rowsTeachers=mysqli_fetch_array($resultTeacher);
+
+
+?>
 <html>
 <head></head>
     <div id="wrapper">
             <div id="content">
-                <form action="/db/insertOrUpdate.php" method="post">
-                    <label for="fusername">Usuario:</label>
-                    <input type="text" id="fusername" name="fusername"><br><br>
-                    <label for="lpassword">Contraseña:</label>
-                    <input type="text" id="lpassword" name="lpasword"><br><br>
+                <form action="../subjects/db/insertOrUpdate.php" method="post">
+                    <select id="lidteacher" name="lidteacher">
+                        <?php while($rowsTeachers = mysqli_fetch_array($resultTeacher)): ?>
+                            <?php
+                            $selected = $rowsTeachers['id']==$result['id_teacher']?"selected='selected'":'';
+                            ?>
+                            <option value="<?php echo $rowsTeachers['id']; ?>" <?php echo $selected; ?>><?php echo $rowsTeachers['username']; ?></option>
+                        <?php endwhile; ?>
+                    </select><br><br>
                     <label for="lname">Nombre:</label>
                     <input type="text" id="lname" name="lname"><br><br>
-                    <label for="lsurname">Apellido:</label>
-                    <input type="text" id="lsurname" name="lsurname"><br><br>
-                    <label for="ltelephone">Teléfono:</label>
-                    <input type="text" id="ltelephone" name="ltelephone"><br><br>
-                    <label for="lnif">NIF/DNI:</label>
-                    <input type="text" id="lnif" name="lnif"><br><br>
-                    <label for="ltype">Tipo:</label>
-                    <select id="ltype" name="ltype">
-                        <option value="admin">Administrador</option>
-                        <option value="teacher">Profesor</option>
-                        <option value="student">Estudiante</option>
-                    </select><br><br>
+                    <label for="lcolor">Color:</label>
+                    <input type="text" id="lcolor" name="lcolor"><br><br>
                     <input type="submit" value="Submit">
                 </form>
             </div>
-
     </div>
 </body>
 </html>
