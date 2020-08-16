@@ -2,7 +2,7 @@
     session_start();
     $host="localhost";
     $username="root";
-    $password="";
+    $password="123";
     $db_name="schoolDB";
 
     $link = 
