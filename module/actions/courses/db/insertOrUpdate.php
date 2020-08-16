@@ -31,8 +31,9 @@ if($insert){ //insert
 }
 
 if (mysqli_query($link, $sql)) {
-    $result = $insert?"inserted":"updated";
-    echo "New record {$result} successfully";
+    //$result = $insert?"inserted":"updated";
+    //echo "New record {$result} successfully";
+    header("Location:../list.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }

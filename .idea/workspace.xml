@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" afterDir="false" />
-    </list>
+    <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +25,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/courses" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/enrollment" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -39,11 +37,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module/actions/enrollment" />
       <recent name="$PROJECT_DIR$/module/actions/courses" />
       <recent name="$PROJECT_DIR$/module" />
       <recent name="$PROJECT_DIR$/module/actions/schedule" />
       <recent name="$PROJECT_DIR$/module/actions/users_admin" />
-      <recent name="$PROJECT_DIR$/module/actions/teachers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/module/actions/users" />
