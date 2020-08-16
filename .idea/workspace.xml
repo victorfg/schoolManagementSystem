@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/db/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/db/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/db/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/db/selectBetweenDates.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

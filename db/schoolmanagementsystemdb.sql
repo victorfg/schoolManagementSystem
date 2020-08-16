@@ -59,7 +59,7 @@ CREATE TABLE `courses` (
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id_course`),
   UNIQUE KEY `name` (`name`,`date_start`,`date_end`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (2,'asir','Sistemas y redes','2020-08-01','2020-08-30',1),(3,'dam','desarrollo de aplicaciones multiplataforma','2020-08-01','2020-08-30',0);
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-16 19:19:33
+-- Dump completed on 2020-08-16 20:13:00
