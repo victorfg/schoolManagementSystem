@@ -125,24 +125,24 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
             <div id="wrapper">
                 <div id="content" class="justify-content-center">
                     <form action="../course-subjects/db/insertOrUpdate.php" method="post">
-                        <label for="lid">id:</label>
+                        <label for="fid">id:</label>
                         <input type="text" id="lid" name="lid" value="<?php echo $rows['id']; ?>"><br><br>
-                        <label for="lidcourse">Curso:</label>
+                        <label for="fidcourse">Curso:</label>
                         <select id="lidcourse" name="lidcourse">
                             <?php while($rowsCourse = mysqli_fetch_array($resultCourses)): ?>
                                 <?php
-                                $selected = $rowsCourse['id']==$result['id_course']?"selected='selected'":'';
+                                $selected = $rowsCourse['id_course']==$result['id_course']?"selected='selected'":'';
                                 ?>
-                                <option value="<?php echo $rowsCourse['id']; ?>" <?php echo $selected; ?>><?php echo $rowsCourse['name']; ?></option>
+                                <option value="<?php echo $rowsCourse['id_course']; ?>" <?php echo $selected; ?>><?php echo $rowsCourse['name']; ?></option>
                             <?php endwhile; ?>
                         </select><br><br>
                         <label for="lidsubject">Asignatura:</label>
                         <select id="lidsubject" name="lidsubject">
                             <?php while($rowsSubject = mysqli_fetch_array($resultSubject)): ?>
                                 <?php
-                                $selected = $rowsSubject['id']==$result['id_subject']?"selected='selected'":'';
+                                $selected = $rowsSubject['id_subject']==$result['id_subject']?"selected='selected'":'';
                                 ?>
-                                <option value="<?php echo $rowsSubject['id']; ?>" <?php echo $selected; ?>><?php echo $rowsSubject['name']; ?></option>
+                                <option value="<?php echo $rowsSubject['id_subject']; ?>" <?php echo $selected; ?>><?php echo $rowsSubject['name']; ?></option>
                             <?php endwhile; ?>
                         </select><br><br>
                         <input type="submit" value="Submit">

@@ -10,14 +10,13 @@ $check=$_SESSION['login_id'];
 
 $specified = !empty($id);
 if($specified) {
-    $sql = "SELECT * FROM subjects WHERE 
+    $sql = "SELECT * FROM course_subjects WHERE 
     id_course = {$id}";
 }else {
     header("Location:../courses/list.php");
 }
 
 $result = mysqli_query($link, $sql);
-$row = mysqli_num_rows($result);
 ?>
 
 <html>
@@ -124,18 +123,15 @@ $row = mysqli_num_rows($result);
                     <table width="500", cellpadding=5 callspacing=5 border=1>
                         <tr>
                             <th>ID</th>
-                            <th>name</th>
-                            <th>description</th>
-                            <th>Inicio</th>
-                            <th>Fin</th>
-                            <th>Activo</th>
-                            <th></th>
+                            <th>id_course</th>
+                            <th>id_subject</th>
                             <th></th>
                             <th></th>
                         </tr>
 
                     <?php while($rows = mysqli_fetch_array($result)): ?>
                         <tr>
+                            <td><?php echo $rows['id']; ?></td>
                             <td><?php echo $rows['id_course']; ?></td>
                             <td><?php echo $rows['id_subject']; ?></td>
                             <td> <a href=<?php echo "form.php?id=".$rows['id']; ?>>Modificar</a></td>

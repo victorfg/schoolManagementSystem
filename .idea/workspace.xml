@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/mysqlConection.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/mysqlConection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/db/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/list.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

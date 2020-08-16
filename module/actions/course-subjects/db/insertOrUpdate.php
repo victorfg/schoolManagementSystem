@@ -16,10 +16,10 @@ $idSubject=stripslashes($idSubject);
 
 $insert = empty($id);
 if($insert){ //insert
-    $sql="insert into course_subjects(id_course,is_subject)
+    $sql="insert into course_subjects(id_course,id_subject)
             values('{$idCourse}','{$idSubject}')";
 }else{ //update
-    $sql="update course_subjects set id_course='{$idCourse}',is_subject='{$idSubject}'
+    $sql="update course_subjects set id_course='{$idCourse}',id_subject='{$idSubject}'
                where id={$id}";
 }
 
