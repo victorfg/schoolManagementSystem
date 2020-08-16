@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/module/actions/users/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/class/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/class/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/class/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/selectBetweenDates.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/selectBetweenDates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/selectBetweenDates.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/selectBetweenDates.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/students/delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/students/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/users/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/students/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/teachers/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/users/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/teachers/insertOrUpdate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/teachers/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/insertOrUpdate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/admin/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/admin/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/checkAccess.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/checkAccess.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,17 +38,17 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/module/actions/users" />
-      <recent name="$PROJECT_DIR$/source/Models" />
-      <recent name="$PROJECT_DIR$/service" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/module" />
       <recent name="$PROJECT_DIR$/module/actions/courses" />
       <recent name="$PROJECT_DIR$/module/actions/schedule" />
       <recent name="$PROJECT_DIR$/module/actions/users_admin" />
       <recent name="$PROJECT_DIR$/module/actions/teachers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module/actions/users" />
+      <recent name="$PROJECT_DIR$/source/Models" />
+      <recent name="$PROJECT_DIR$/service" />
     </key>
   </component>
   <component name="RunManager">

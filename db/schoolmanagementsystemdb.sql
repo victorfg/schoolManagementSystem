@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `class`
+-- Table structure for table `course_subjects`
 --
 
-DROP TABLE IF EXISTS `class`;
+DROP TABLE IF EXISTS `course_subjects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `class` (
-  `id_class` int(11) NOT NULL AUTO_INCREMENT,
-  `id_teacher` int(11) NOT NULL,
+CREATE TABLE `course_subjects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_course` int(11) NOT NULL,
-  `id_schedule` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `color` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_class`),
-  UNIQUE KEY `id_teacher` (`id_teacher`,`id_course`,`id_schedule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `id_subject` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `course_subjects_FK` (`id_course`),
+  KEY `course_subjects_FK_1` (`id_subject`),
+  CONSTRAINT `course_subjects_FK` FOREIGN KEY (`id_course`) REFERENCES `courses` (`id_course`),
+  CONSTRAINT `course_subjects_FK_1` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `class`
+-- Dumping data for table `course_subjects`
 --
 
-LOCK TABLES `class` WRITE;
-/*!40000 ALTER TABLE `class` DISABLE KEYS */;
-/*!40000 ALTER TABLE `class` ENABLE KEYS */;
+LOCK TABLES `course_subjects` WRITE;
+/*!40000 ALTER TABLE `course_subjects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_subjects` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -106,7 +106,8 @@ DROP TABLE IF EXISTS `schedule`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schedule` (
   `id_schedule` int(11) NOT NULL AUTO_INCREMENT,
-  `id_class` int(11) NOT NULL,
+  `id_course` int(11) NOT NULL,
+  `id_subject` int(11) NOT NULL,
   `time_start` time NOT NULL,
   `time_end` time NOT NULL,
   `day` date NOT NULL,
@@ -124,6 +125,34 @@ LOCK TABLES `schedule` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `subjects`
+--
+
+DROP TABLE IF EXISTS `subjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subjects` (
+  `id_subject` int(11) NOT NULL AUTO_INCREMENT,
+  `id_teacher` int(11) NOT NULL,
+  `id_course` int(11) NOT NULL,
+  `id_schedule` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `color` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_subject`),
+  UNIQUE KEY `id_teacher` (`id_teacher`,`id_course`,`id_schedule`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subjects`
+--
+
+LOCK TABLES `subjects` WRITE;
+/*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -133,7 +162,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
@@ -143,7 +172,7 @@ CREATE TABLE `users` (
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `username` (`username`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +181,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','123','prosen@example.com','admin','test','+34 98765243','987654','0000-00-00 00:00:00','admin'),(2,'teacher','123','prosen@example.com','teacher','test','+34 98765243','987654','0000-00-00 00:00:00','teacher'),(3,'student','123','prosen@example.com','student','test','+34 98765243','987654','0000-00-00 00:00:00','student');
+INSERT INTO `users` VALUES (1,'admin','123','prosen@example.com','Manuel','MendizÃ¡bal GonzÃ¡lez','677784082','987654','0000-00-00 00:00:00','admin'),(23,'teacher','123','test@test.es','teacher','teacher','123','123124','2020-08-16 18:54:29','teacher'),(25,'student','123','test@test','student','student','123123','afasfdadf1','2020-08-16 19:18:31','student');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-09 20:15:15
+-- Dump completed on 2020-08-16 19:19:33
