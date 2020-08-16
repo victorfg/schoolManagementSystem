@@ -2,8 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/mysqlConection.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/mysqlConection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module/actions/users/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/class/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/class/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/class/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/select.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/select.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/selectBetweenDates.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/db/selectBetweenDates.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/db/select.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/schedule/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/schedule/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/schedule/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/select.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/schedule/selectBetweenDates.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/selectBetweenDates.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/students/delete.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/students/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/users/db/insertOrUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/students/select.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/teachers/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/users/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/teachers/insertOrUpdate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/teachers/select.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/delete.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/insertOrUpdate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/users_admin/select.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/admin/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/admin/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/checkAccess.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/checkAccess.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +42,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="1fM1XIC2rn1mrIS0bXvLI5HpeRm" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -29,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/courses" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/class" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -40,16 +65,17 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module/actions/users" />
+      <recent name="$PROJECT_DIR$/source/Models" />
+      <recent name="$PROJECT_DIR$/service" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module" />
       <recent name="$PROJECT_DIR$/module/actions/courses" />
       <recent name="$PROJECT_DIR$/module/actions/schedule" />
       <recent name="$PROJECT_DIR$/module/actions/users_admin" />
       <recent name="$PROJECT_DIR$/module/actions/teachers" />
-      <recent name="$PROJECT_DIR$/module/actions/students" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/source/Models" />
-      <recent name="$PROJECT_DIR$/service" />
     </key>
   </component>
   <component name="RunManager">
@@ -76,7 +102,10 @@
       <updated>1596013185345</updated>
       <workItem from="1596013186480" duration="11749000" />
       <workItem from="1596090478134" duration="3000" />
-      <workItem from="1596986967494" duration="6619000" />
+      <workItem from="1596986967494" duration="10042000" />
+      <workItem from="1597061600122" duration="3212000" />
+      <workItem from="1597157440540" duration="613000" />
+      <workItem from="1597588137167" duration="9136000" />
     </task>
     <servers />
   </component>
@@ -108,9 +137,10 @@
       <screen x="0" y="27" width="1866" height="1053" />
     </state>
     <state x="429" y="188" width="1007" height="737" key="SettingsEditor/0.27.1866.1053@0.27.1866.1053" timestamp="1596017805152" />
-    <state x="627" y="302" width="611" height="592" key="find.popup" timestamp="1596022388145">
-      <screen x="0" y="27" width="1866" height="1053" />
+    <state x="2005" y="282" width="629" height="608" key="find.popup" timestamp="1596997201384">
+      <screen x="1360" y="0" width="1920" height="1080" />
     </state>
+    <state x="2005" y="282" width="629" height="608" key="find.popup/0.172.1360.741/1360.0.1920.1080@1360.0.1920.1080" timestamp="1596997201384" />
     <state x="627" y="302" width="611" height="592" key="find.popup/0.27.1866.1053@0.27.1866.1053" timestamp="1596022388145" />
     <state x="597" y="252" key="run.anything.popup" timestamp="1596017588228">
       <screen x="0" y="27" width="1866" height="1053" />
@@ -121,5 +151,16 @@
     </state>
     <state x="1973" y="238" width="692" height="696" key="search.everywhere.popup/0.172.1360.741/1360.0.1920.1080@1360.0.1920.1080" timestamp="1596994279173" />
     <state x="596" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1866.1053@0.27.1866.1053" timestamp="1596022828372" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/module/actions/users/db/insertOrUpdate.php</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
