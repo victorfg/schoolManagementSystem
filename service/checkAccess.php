@@ -18,10 +18,10 @@
     echo $control;
 
     if($count!=1 || !isset($control)){
-        header("Location:../index.php?login=false");
+        header("Location:../start.php?login=false");
     } else if($count==1 && $control=="admin"){
         header("Location:../module/admin");
     } else {
-        header("Location:../index.php?login=false");
+        header("Location:../start.php?login=false");
     }
 ?>
