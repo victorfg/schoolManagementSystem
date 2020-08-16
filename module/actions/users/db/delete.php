@@ -16,7 +16,8 @@ if($specified) {
     return;
 }
 if (mysqli_query($link, $sql)) {
-    echo "Record deleted successfully";
+    //echo "Record deleted successfully";
+    header("Location:../list.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }
