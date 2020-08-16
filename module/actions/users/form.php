@@ -72,7 +72,7 @@ $rows=mysqli_fetch_array($result);
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Cursos/Asignaturas</span></a>
+                    <span>Cursos</span></a>
             </li>
 
             <!-- Divider -->
