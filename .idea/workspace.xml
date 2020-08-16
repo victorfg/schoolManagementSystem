@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/db/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/db/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/db/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/courses/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/mysqlConection.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/mysqlConection.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/enrollment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/courseSubjects" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,11 +42,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module/actions/courseSubjects" />
       <recent name="$PROJECT_DIR$/module/actions/enrollment" />
       <recent name="$PROJECT_DIR$/module/actions/courses" />
       <recent name="$PROJECT_DIR$/module" />
       <recent name="$PROJECT_DIR$/module/actions/schedule" />
-      <recent name="$PROJECT_DIR$/module/actions/users_admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/module/actions/users" />
@@ -125,10 +123,10 @@
       <screen x="0" y="27" width="1866" height="1053" />
     </state>
     <state x="597" y="252" key="run.anything.popup/0.27.1866.1053@0.27.1866.1053" timestamp="1596017588228" />
-    <state x="1973" y="238" width="692" height="696" key="search.everywhere.popup" timestamp="1596994279173">
+    <state x="1973" y="238" width="692" height="696" key="search.everywhere.popup" timestamp="1597612481578">
       <screen x="1360" y="0" width="1920" height="1080" />
     </state>
-    <state x="1973" y="238" width="692" height="696" key="search.everywhere.popup/0.172.1360.741/1360.0.1920.1080@1360.0.1920.1080" timestamp="1596994279173" />
+    <state x="1973" y="238" width="692" height="696" key="search.everywhere.popup/0.172.1360.741/1360.0.1920.1080@1360.0.1920.1080" timestamp="1597612481578" />
     <state x="596" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1866.1053@0.27.1866.1053" timestamp="1596022828372" />
   </component>
   <component name="XDebuggerManager">

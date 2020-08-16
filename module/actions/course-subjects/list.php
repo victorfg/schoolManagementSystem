@@ -4,20 +4,20 @@ if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }
-$id=$_GET['id'];
+$id=$_GET['idCourse'];
 $id=stripslashes($id);
 $check=$_SESSION['login_id'];
 
 $specified = !empty($id);
 if($specified) {
-    $sql = "SELECT * FROM courses WHERE 
+    $sql = "SELECT * FROM subjects WHERE 
     id_course = {$id}";
 }else {
-    $sql = "SELECT * FROM courses";
+    header("Location:../courses/list.php");
 }
 
 $result = mysqli_query($link, $sql);
-
+$row = mysqli_num_rows($result);
 ?>
 
 <html>
@@ -60,7 +60,7 @@ $result = mysqli_query($link, $sql);
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h1 class="justify-content-center-100">Cursos</h1>
+
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
@@ -114,6 +114,12 @@ $result = mysqli_query($link, $sql);
                 </ul>
 
                 </nav>
+                <!-- End of Topbar -->
+                <div class="justify-content-center">
+                    <button>
+                        <a href="form.php">Asignar asignatura a curso</a>
+                    </button>
+                </div>
                 <div class="justify-content-center margin-top-20">
                     <table width="500", cellpadding=5 callspacing=5 border=1>
                         <tr>
@@ -131,13 +137,8 @@ $result = mysqli_query($link, $sql);
                     <?php while($rows = mysqli_fetch_array($result)): ?>
                         <tr>
                             <td><?php echo $rows['id_course']; ?></td>
-                            <td><?php echo $rows['name']; ?></td>
-                            <td><?php echo $rows['description']; ?></td>
-                            <td><?php echo $rows['date_start']; ?></td>
-                            <td><?php echo $rows['date_end']; ?></td>
-                            <td><?php echo $rows['active']; ?></td>
-                            <td> <a href=<?php echo "form.php?id=".$rows['id_course']; ?>>Modificar</a></td>
-                            <td> <a href=<?php echo "../course-subjects/list.php?idCourse=".$rows['id_course']; ?>>Asignaturas</a></td>
+                            <td><?php echo $rows['id_subject']; ?></td>
+                            <td> <a href=<?php echo "form.php?id=".$rows['id']; ?>>Modificar</a></td>
                             <td> <a href=<?php echo "db/delete.php?id=".$rows['id_course']; ?>>Borrar</a></td>
                         </tr>
                     <?php endwhile; ?>
