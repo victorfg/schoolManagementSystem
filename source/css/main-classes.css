@@ -6,6 +6,17 @@
     display: flex;
     justify-content: center;
 }
+
 .margin-top-20{
     margin-top: 20px;
+}
+
+.display-none{
+    display: none !important;
+}
+
+.justify-content-center-100{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
