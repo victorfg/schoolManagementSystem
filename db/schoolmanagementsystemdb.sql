@@ -59,7 +59,7 @@ CREATE TABLE `courses` (
   `active` int(11) NOT NULL,
   PRIMARY KEY (`id_course`),
   UNIQUE KEY `name` (`name`,`date_start`,`date_end`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (2,'asir','Sistemas y redes','2020-08-01','2020-08-30',1),(3,'dam','desarrollo de aplicaciones multiplataforma','2020-08-01','2020-08-30',0);
+INSERT INTO `courses` VALUES (2,'asir','Sistemas y redes','2020-08-01','2020-08-30',1),(3,'dam','desarrollo de aplicaciones multiplataforma','2020-08-01','2020-08-30',0),(4,'daw','desarrollo de aplicaciones web','2020-08-13','2020-08-13',1),(6,'daw2','desarrollo de aplicaciones web','2020-08-13','2020-08-13',1);
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `enrollment` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id_enrollment`),
   UNIQUE KEY `id_student` (`id_student`,`id_course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +95,7 @@ CREATE TABLE `enrollment` (
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
+INSERT INTO `enrollment` VALUES (4,26,3,1),(7,26,6,1);
 /*!40000 ALTER TABLE `enrollment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,13 +136,10 @@ DROP TABLE IF EXISTS `subjects`;
 CREATE TABLE `subjects` (
   `id_subject` int(11) NOT NULL AUTO_INCREMENT,
   `id_teacher` int(11) NOT NULL,
-  `id_course` int(11) NOT NULL,
-  `id_schedule` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `color` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_subject`),
-  UNIQUE KEY `id_teacher` (`id_teacher`,`id_course`,`id_schedule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `name` varchar(100) NOT NULL,
+  `color` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_subject`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +148,7 @@ CREATE TABLE `subjects` (
 
 LOCK TABLES `subjects` WRITE;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
+INSERT INTO `subjects` VALUES (2,27,'student','sdf'),(3,27,'sdfsf','sdfsf');
 /*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +172,7 @@ CREATE TABLE `users` (
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `username` (`username`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +181,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','123','prosen@example.com','Manuel','MendizÃ¡bal GonzÃ¡lez','677784082','987654','0000-00-00 00:00:00','admin'),(23,'teacher','123','test@test.es','teacher','teacher','123','123124','2020-08-16 18:54:29','teacher'),(25,'student','123','test@test','student','student','123123','afasfdadf1','2020-08-16 19:18:31','student');
+INSERT INTO `users` VALUES (1,'admin','123','prosen@example.com','Manuel','MendizÃ¡bal GonzÃ¡lez','677784082','987654','0000-00-00 00:00:00','admin'),(23,'teacher','123','test@test.es','teacher','teacher','123','123124','2020-08-16 18:54:29','teacher'),(25,'student','123','test@test','student','student','123123','afasfdadf1','2020-08-16 19:18:31','student'),(26,'student2','123','test','test','test','677784082','sdsgdgs','2020-08-16 21:19:21','student'),(27,'test12341','123','mendinformatica@gmail.com','Manuel','GonzÃ¡lez','677784082','12414','2020-08-16 22:33:43','teacher');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-16 20:13:00
+-- Dump completed on 2020-08-16 22:55:27
