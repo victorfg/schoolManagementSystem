@@ -127,6 +127,7 @@ $result = mysqli_query($link, $sql);
                             <th>id_subject</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
 
                     <?php while($rows = mysqli_fetch_array($result)): ?>
@@ -135,6 +136,7 @@ $result = mysqli_query($link, $sql);
                             <td><?php echo $rows['id_course']; ?></td>
                             <td><?php echo $rows['id_subject']; ?></td>
                             <td> <a href=<?php echo "form.php?id=".$rows['id']; ?>>Modificar</a></td>
+                            <td> <a href=<?php echo "../schedule/list.php?idcourse={$rows['id_course']}&idsubject=".$rows['id_subject']; ?>>Horarios</a></td>
                             <td> <a href=<?php echo "db/delete.php?id=".$rows['id_course']; ?>>Borrar</a></td>
                         </tr>
                     <?php endwhile; ?>

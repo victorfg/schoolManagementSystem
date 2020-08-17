@@ -33,7 +33,7 @@ if($insert){ //insert
 if (mysqli_query($link, $sql)) {
     //$result = $insert?"inserted":"updated";
     //echo "New record {$result} successfully";
-    header("Location:../list.php");
+    header("Location:../list.php?idcourse={$idCourse}&idsubject={$idSubject}");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($link);
 }

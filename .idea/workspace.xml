@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/db/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/db/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/actions/schedule/db/insertOrUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/db/insertOrUpdate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/db/select.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/db/selectBetweenDates.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/module/actions/schedule/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/actions/schedule/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/list.php" afterDir="false" />
     </list>
@@ -86,7 +83,7 @@
       <workItem from="1597061600122" duration="3212000" />
       <workItem from="1597157440540" duration="613000" />
       <workItem from="1597588137167" duration="9136000" />
-      <workItem from="1597667874175" duration="5977000" />
+      <workItem from="1597667874175" duration="7827000" />
     </task>
     <servers />
   </component>

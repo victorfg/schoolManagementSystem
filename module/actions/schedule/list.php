@@ -5,10 +5,21 @@ if($_SESSION['login_type']==='student' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }
-$id=$_GET['idCourse'];
-$id=stripslashes($id);
+
+$idCourse=$_GET['idcourse'];
+$idCourse=stripslashes($idCourse);
+$idSubject=$_GET['idsubject'];
+$idSubject=stripslashes($idSubject);
 $check=$_SESSION['login_id'];
-$sql = "SELECT * FROM schedule";
+
+$specified = !empty($idCourse) && !empty($idSubject);
+if($specified) {
+    $sql = "SELECT * FROM schedule WHERE 
+    id_course = {$idCourse} and id_subject = {$idSubject}";
+}else {
+    header("Location:../course-subjects/list.php?idCourse={$idCourse}");
+}
+
 $result = mysqli_query($link, $sql);
 ?>
 
@@ -109,7 +120,7 @@ $result = mysqli_query($link, $sql);
             <!-- End of Topbar -->
             <div class="justify-content-center">
                 <button>
-                    <a href="form.php">Asignar horario a asignatura</a>
+                    <a href=<?php echo "form.php?idCourse={$idCourse}&idSubject={$idSubject}"; ?>>Asignar horario a asignatura</a>
                 </button>
             </div>
             <div class="justify-content-center margin-top-20">
