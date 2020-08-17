@@ -5,7 +5,7 @@ if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
     return;
 }
 
-$id=$_POST['lzid'];
+$id=$_POST['lid'];
 $idCourse=$_POST['lidcourse'];
 $idSubject=$_POST['lidsubject'];
 

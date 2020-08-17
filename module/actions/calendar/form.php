@@ -1,15 +1,35 @@
 <?php
 include_once('../../../service/mysqlConection.php');
-if($_SESSION['login_type']==='student' || empty($_SESSION['login_type'])){
-    echo $_SESSION['login_type'];
+if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }
-$id=$_GET['idCourse'];
-$id=stripslashes($id);
+
+$id=$_GET['id'];
+$idCourse=$_GET['idCourse'];
 $check=$_SESSION['login_id'];
-$sql = "SELECT * FROM schedule";
+$id=stripslashes($id);
+$idCourse=stripslashes($idCourse);
+$specified = !empty($id);
+if($specified) {
+    $sql = "SELECT * FROM course_subjects WHERE 
+    id = {$id}";
+}
+
 $result = mysqli_query($link, $sql);
+$rows=mysqli_fetch_array($result);
+if(empty($idCourse)){
+    $idCourse = $rows['id_course'];
+}
+
+$sqlSubjects = "SELECT * FROM subjects";
+
+$resultSubject = mysqli_query($link, $sqlSubjects);
+
+$sqlCourses = "SELECT * FROM courses";
+
+$resultCourses  = mysqli_query($link, $sqlCourses);
+
 ?>
 
 <html>
@@ -106,38 +126,32 @@ $result = mysqli_query($link, $sql);
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
-            <div class="justify-content-center">
-                <button>
-                    <a href="form.php">Asignar horario a asignatura</a>
-                </button>
-            </div>
-            <div class="justify-content-center margin-top-20">
-                <table width="500", cellpadding=5 callspacing=5 border=1>
-                    <tr>
-                        <th>ID</th>
-                        <th>id_course</th>
-                        <th>id_subject</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                        <th>Dias</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-
-                    <?php while($rows = mysqli_fetch_array($result)): ?>
-                        <tr>
-                            <td><?php echo $rows['id_schedule']; ?></td>
-                            <td><?php echo $rows['id_course']; ?></td>
-                            <td><?php echo $rows['id_subject']; ?></td>
-                            <td><?php echo $rows['time_start']; ?></td>
-                            <td><?php echo $rows['time_end']; ?></td>
-                            <td><?php echo $rows['day']; ?></td>
-                            <td> <a href=<?php echo "form.php?id=".$rows['id_schedule']; ?>>Modificar</a></td>
-                            <td> <a href=<?php echo "db/delete.php?id=".$rows['id_schedule']; ?>>Borrar</a></td>
-                        </tr>
-                    <?php endwhile; ?>
-                    <table>
+            <div id="wrapper">
+                <div id="content" class="justify-content-center">
+                    <form action="../course-subjects/db/insertOrUpdate.php" method="post">
+                        <label for="fid">id:</label>
+                        <input type="text" id="lid" name="lid" value="<?php echo $rows['id']; ?>"><br><br>
+                        <label for="fidcourse">Curso:</label>
+                        <select id="lidcourse" name="lidcourse">
+                            <?php while($rowsCourse = mysqli_fetch_array($resultCourses)): ?>
+                                <?php
+                                    $selected = $rowsCourse['id_course']==$idCourse?'selected=\'selected\'':'';
+                                ?>
+                                <option value="<?php echo $rowsCourse['id_course']; ?>" <?php echo $selected; ?>><?php echo $rowsCourse['name']; ?></option>
+                            <?php endwhile; ?>
+                        </select><br><br>
+                        <label for="lidsubject">Asignatura:</label>
+                        <select id="lidsubject" name="lidsubject">
+                            <?php while($rowsSubject = mysqli_fetch_array($resultSubject)): ?>
+                                <?php
+                                $selected = $rowsSubject['id_subject']==$rows['id_subject']?'selected=\'selected\'':'';
+                                ?>
+                                <option value="<?php echo $rowsSubject['id_subject']; ?>" <?php echo $selected; ?>><?php echo $rowsSubject['name']; ?></option>
+                            <?php endwhile; ?>
+                        </select><br><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
             </div>
         </div>
         <!-- End of Main Content -->
