@@ -6,8 +6,10 @@ if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
 }
 
 $id=$_GET['id'];
+$idCourse=$_GET['idCourse'];
 $check=$_SESSION['login_id'];
 $id=stripslashes($id);
+$idCourse=stripslashes($idCourse);
 $specified = !empty($id);
 if($specified) {
     $sql = "SELECT * FROM course_subjects WHERE 
@@ -16,7 +18,9 @@ if($specified) {
 
 $result = mysqli_query($link, $sql);
 $rows=mysqli_fetch_array($result);
-
+if(empty($idCourse)){
+    $idCourse = $rows['id_course'];
+}
 
 $sqlSubjects = "SELECT * FROM subjects";
 
@@ -131,7 +135,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                         <select id="lidcourse" name="lidcourse">
                             <?php while($rowsCourse = mysqli_fetch_array($resultCourses)): ?>
                                 <?php
-                                $selected = $rowsCourse['id_course']==$result['id_course']?"selected='selected'":'';
+                                    $selected = $rowsCourse['id_course']==$idCourse?'selected=\'selected\'':'';
                                 ?>
                                 <option value="<?php echo $rowsCourse['id_course']; ?>" <?php echo $selected; ?>><?php echo $rowsCourse['name']; ?></option>
                             <?php endwhile; ?>
@@ -140,7 +144,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                         <select id="lidsubject" name="lidsubject">
                             <?php while($rowsSubject = mysqli_fetch_array($resultSubject)): ?>
                                 <?php
-                                $selected = $rowsSubject['id_subject']==$result['id_subject']?"selected='selected'":'';
+                                $selected = $rowsSubject['id_subject']==$rows['id_subject']?'selected=\'selected\'':'';
                                 ?>
                                 <option value="<?php echo $rowsSubject['id_subject']; ?>" <?php echo $selected; ?>><?php echo $rowsSubject['name']; ?></option>
                             <?php endwhile; ?>

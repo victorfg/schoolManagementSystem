@@ -116,7 +116,7 @@ $result = mysqli_query($link, $sql);
                 <!-- End of Topbar -->
                 <div class="justify-content-center">
                     <button>
-                        <a href="form.php">Asignar asignatura a curso</a>
+                        <a href=<?php echo "form.php?idCourse=".$id; ?>>Asignar asignatura a curso</a>
                     </button>
                 </div>
                 <div class="justify-content-center margin-top-20">
