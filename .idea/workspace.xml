@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/calendar/db/delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/calendar/db/insertOrUpdate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/calendar/form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/calendar/list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schoolmanagementsystemdb.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,7 @@
       <workItem from="1597157440540" duration="613000" />
       <workItem from="1597588137167" duration="9136000" />
       <workItem from="1597667874175" duration="8444000" />
-      <workItem from="1597751060727" duration="6851000" />
+      <workItem from="1597751060727" duration="6936000" />
     </task>
     <servers />
   </component>

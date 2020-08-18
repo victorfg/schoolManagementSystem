@@ -31,7 +31,7 @@ CREATE TABLE `course_subjects` (
   KEY `course_subjects_FK_1` (`id_subject`),
   CONSTRAINT `course_subjects_FK` FOREIGN KEY (`id_course`) REFERENCES `courses` (`id_course`),
   CONSTRAINT `course_subjects_FK_1` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id_subject`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `course_subjects` (
 
 LOCK TABLES `course_subjects` WRITE;
 /*!40000 ALTER TABLE `course_subjects` DISABLE KEYS */;
+INSERT INTO `course_subjects` VALUES (1,2,3),(2,2,2),(3,3,3),(4,6,3);
 /*!40000 ALTER TABLE `course_subjects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,9 +113,9 @@ CREATE TABLE `schedule` (
   `id_subject` int(11) NOT NULL,
   `time_start` time NOT NULL,
   `time_end` time NOT NULL,
-  `day` date NOT NULL,
+  `day` varchar(100) NOT NULL,
   PRIMARY KEY (`id_schedule`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,6 +124,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
+INSERT INTO `schedule` VALUES (3,3,4,'22:01:00','22:01:00',''),(4,1,2,'21:03:00','23:03:00',''),(5,1,3,'22:04:00','22:04:00','m|w'),(6,2,2,'21:03:00','23:03:00','m|w'),(7,2,3,'22:04:00','22:04:00','m|t|w|r|f|s|u'),(8,2,2,'21:03:00','23:03:00','w|f'),(9,2,3,'22:04:00','22:04:00','t|r'),(10,2,3,'22:04:00','22:04:00','m|t|w|r|f|s|u');
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-16 22:55:27
+-- Dump completed on 2020-08-18 15:59:40
