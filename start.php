@@ -51,8 +51,12 @@
                             </button>
                         </div>
                         <div class="text-align-center margin-top-15">
-                        <div>Para loguearse como admin  </div>
-                            <div>user:admin pass:123 </div>
+                            <div>Admin  </div>
+                            <div>user: admin pass: 123 </div>
+                            <div>Teacher  </div>
+                            <div>user: teacher pass: 123 </div>
+                            <div>Student  </div>
+                            <div>user: student pass: 123 </div>
                         </div>
                     </form>
 
