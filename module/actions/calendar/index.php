@@ -4,7 +4,7 @@ include_once('../../../service/mysqlConection.php');
 $week=$_GET['week'];
 $week=stripslashes($week);
 if(empty($week)) {
-
+$week = date('Y').'-W'.date('W');
 }
 
 $sql = "SELECT * FROM schedule WHERE 
@@ -130,15 +130,14 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
       <!-- End of Topbar -->
       <div class="justify-content-center">
           <div class="cd-schedule margin-top-lg margin-bottom-lg js-cd-schedule">
-              <form action="../schedule/db/insertOrUpdate.php" method="post">
-                  <label for="lweek">Semana:</label>
+              <form action="../schedule/db/insertOrUpdate.php" method="post" style="margin-left: 61px;margin-bottom: 5px;">
                   <input type="week" id="lweek" name="lweek" value="<?php echo $week; ?>">
                   <input type="submit" value="Filtrar">
               </form>
                   <div class="cd-schedule__events">
                       <ul>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Monday</span></div>
+                              <div class="cd-schedule__top-info"><span>Lunes</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -161,7 +160,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Tuesday</span></div>
+                              <div class="cd-schedule__top-info"><span>Martes</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -191,7 +190,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Wednesday</span></div>
+                              <div class="cd-schedule__top-info"><span>Miercoles</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -221,7 +220,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Thursday</span></div>
+                              <div class="cd-schedule__top-info"><span>Jueves</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -251,7 +250,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Friday</span></div>
+                              <div class="cd-schedule__top-info"><span>Viernes</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -274,7 +273,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                               </ul>
                           </li>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Saturday</span></div>
+                              <div class="cd-schedule__top-info"><span>Sábado</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
@@ -297,7 +296,7 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
                               </ul>
                           </li>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Sunday</span></div>
+                              <div class="cd-schedule__top-info"><span>Domingo</span></div>
 
                               <ul>
                                   <li class="cd-schedule__event">
