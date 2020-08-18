@@ -1,14 +1,21 @@
 <?php
 include_once('../../../service/mysqlConection.php');
-
+if(empty($_SESSION['user_id'])){
+    echo "necesitas hacer login";
+    return;
+}
 $week=$_GET['week'];
 $week=stripslashes($week);
 if(empty($week)) {
 $week = date('Y').'-W'.date('W');
 }
 
-$sql = "SELECT * FROM schedule WHERE 
-    id_schedule = {$id}";
+$sql = "select * from subjects sb
+inner join schedule s on s.id_subject = sb.id_subject 
+inner join courses c on s.id_course = c.id_course 
+inner join course_subjects cs on cs.id_course = s.id_course 
+inner join enrollment e on e.id_course = s.id_course 
+where id_student =".$_SESSION['user_id'];
 
 $result = mysqli_query($link, $sql);
 $rows=mysqli_fetch_array($result);

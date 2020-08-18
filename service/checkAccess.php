@@ -16,6 +16,8 @@
 
     $_SESSION['login_type'] = $type['type'];
     $control=$type['type'];
+    $userId=$type['id'];
+    $_SESSION['user_id']=$userId;
     echo $control;
 
     if($count!=1 || !isset($control)){
