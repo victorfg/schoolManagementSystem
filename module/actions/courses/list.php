@@ -1,6 +1,6 @@
 <?php
 include_once('../../../service/mysqlConection.php');
-if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
+if($_SESSION['login_type']==='student' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }
@@ -124,8 +124,10 @@ $result = mysqli_query($link, $sql);
                             <th>Fin</th>
                             <th>Activo</th>
                             <th></th>
+                            <?php if($_SESSION['login_type']==='admin'):?>
                             <th></th>
                             <th></th>
+                            <?php  endif?>
                         </tr>
 
                     <?php while($rows = mysqli_fetch_array($result)): ?>
@@ -136,9 +138,13 @@ $result = mysqli_query($link, $sql);
                             <td><?php echo $rows['date_start']; ?></td>
                             <td><?php echo $rows['date_end']; ?></td>
                             <td><?php echo $rows['active']; ?></td>
-                            <td> <a href=<?php echo "form.php?id=".$rows['id_course']; ?>>Modificar</a></td>
+                            <?php if($_SESSION['login_type']==='admin'):?>
+                                <td> <a href=<?php echo "form.php?id=".$rows['id_course']; ?>>Modificar</a></td>
+                            <?php endif?>
                             <td> <a href=<?php echo "../course-subjects/list.php?idCourse=".$rows['id_course']; ?>>Asignaturas</a></td>
+                            <?php  if($_SESSION['login_type']==='admin'):?>
                             <td> <a href=<?php echo "db/delete.php?id=".$rows['id_course']; ?>>Borrar</a></td>
+                            <?php  endif?>
                         </tr>
                     <?php endwhile; ?>
                     <table>
