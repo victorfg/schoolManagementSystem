@@ -1,6 +1,6 @@
 <?php
 include_once('../../../service/mysqlConection.php');
-if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
+if($_SESSION['login_type']==='student' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }

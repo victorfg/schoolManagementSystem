@@ -4,6 +4,10 @@ if(empty($_SESSION['user_id'])){
     echo "necesitas hacer login";
     return;
 }
+if($_SESSION['login_type']!=='student'|| empty($_SESSION['login_type'])){
+    echo "no tienes acceso";
+    return;
+}
 $week=$_GET['lweek'];
 $week=stripslashes($week);
 if(empty($week)) {
