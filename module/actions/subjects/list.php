@@ -119,10 +119,8 @@ $row = mysqli_num_rows($result);
             <div class="justify-content-center margin-top-20">
                 <table  class="text-align-center" width="500", cellpadding=5 callspacing=5 border=1>
                     <tr>
-                        <th>id</th>
-                        <th>id_teacher</th>
-                        <th>name</th>
-                        <th>color</th>
+                        <th>#</th>
+                        <th>Asignatura</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -130,9 +128,7 @@ $row = mysqli_num_rows($result);
                     <?php while($rows = mysqli_fetch_array($result)): ?>
                         <tr>
                             <td><?php echo $rows['id_subject']; ?></td>
-                            <td><?php echo $rows['id_teacher']; ?></td>
                             <td><?php echo $rows['name']; ?></td>
-                            <td><?php echo $rows['color']; ?></td>
                             <td> <a href=<?php echo "form.php?id=".$rows['id_subject']; ?>>Modificar</a></td>
                             <td> <a href=<?php echo "db/delete.php?id=".$rows['id_subject']; ?>>Borrar</a></td>
                         </tr>

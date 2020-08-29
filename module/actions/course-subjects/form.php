@@ -125,8 +125,8 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
             <div id="wrapper">
                 <div id="content" class="justify-content-center">
                     <form action="../course-subjects/db/insertOrUpdate.php" method="post">
-                        <label for="fid">id:</label>
-                        <input type="text" id="lid" name="lid" value="<?php echo $rows['id']; ?>"><br><br>
+                        <label  class="display-none" for="fid">id:</label>
+                        <input  class="display-none" type="text" id="lid" name="lid" value="<?php echo $rows['id']; ?>"><br><br>
                         <label for="fidcourse">Curso:</label>
                         <select id="lidcourse" name="lidcourse">
                             <?php while($rowsCourse = mysqli_fetch_array($resultCourses)): ?>

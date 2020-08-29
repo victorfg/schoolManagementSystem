@@ -14,13 +14,20 @@ $check=$_SESSION['login_id'];
 
 $specified = !empty($idCourse) && !empty($idSubject);
 if($specified) {
-    $sql = "SELECT * FROM schedule WHERE 
-    id_course = {$idCourse} and id_subject = {$idSubject}";
+    $sql = "SELECT schedule.*,subjects.id_teacher FROM schedule
+    inner join subjects on subjects.id_subject=schedule.id_subject
+    WHERE 
+    schedule.id_course = {$idCourse} and schedule.id_subject = {$idSubject}";
 }else {
     header("Location:../course-subjects/list.php?idCourse={$idCourse}");
 }
 
 $result = mysqli_query($link, $sql);
+
+$sqlSubjects = "select * from subjects where id_teacher = {$_SESSION['user_id']} and id_subject={$idSubject}";
+$resultSubjects = mysqli_query($link, $sqlSubjects);
+
+$isMainSubject = mysqli_num_rows($resultSubjects)>0;
 ?>
 
 <html>
@@ -114,11 +121,13 @@ $result = mysqli_query($link, $sql);
 
             </nav>
             <!-- End of Topbar -->
+            <?php if($_SESSION['login_type']=='admin' || $isMainSubject):?>
             <div class="justify-content-center">
                 <button>
                     <a href=<?php echo "form.php?idCourse={$idCourse}&idSubject={$idSubject}"; ?>>Asignar horario a asignatura</a>
                 </button>
             </div>
+            <?php endif; ?>
             <div class="justify-content-center margin-top-20">
                 <table width="500", cellpadding=5 callspacing=5 border=1>
                     <tr>
@@ -128,8 +137,10 @@ $result = mysqli_query($link, $sql);
                         <th>Inicio</th>
                         <th>Fin</th>
                         <th>Dias</th>
+                        <?php if($_SESSION['login_type']=='admin' || $isMainSubject):?>
                         <th></th>
                         <th></th>
+                        <?php endif; ?>
                     </tr>
 
                     <?php while($rows = mysqli_fetch_array($result)): ?>
@@ -140,8 +151,10 @@ $result = mysqli_query($link, $sql);
                             <td><?php echo $rows['time_start']; ?></td>
                             <td><?php echo $rows['time_end']; ?></td>
                             <td><?php echo $rows['day']; ?></td>
+                            <?php if($_SESSION['login_type']=='admin' || $isMainSubject):?>
                             <td> <a href=<?php echo "form.php?id=".$rows['id_schedule']; ?>>Modificar</a></td>
                             <td> <a href=<?php echo "db/delete.php?id=".$rows['id_schedule']; ?>>Borrar</a></td>
+                            <?php endif; ?>
                         </tr>
                     <?php endwhile; ?>
                     <table>

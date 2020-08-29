@@ -111,8 +111,8 @@ $rows=mysqli_fetch_array($result);
                 <div id="wrapper">
                     <div id="content" class="justify-content-center">
                         <form action="../courses/db/insertOrUpdate.php" method="post">
-                            <label for="lid">id:</label>
-                            <input type="text" id="lid" name="lid" value="<?php echo $rows['id_course']; ?>"><br><br>
+                            <label class="display-none" for="lid">id:</label>
+                            <input class="display-none" type="text" id="lid" name="lid" value="<?php echo $rows['id_course']; ?>"><br><br>
                             <label for="lname">Nombre:</label>
                             <input type="text" id="lname" name="lname" value="<?php echo $rows['name']; ?>"><br><br>
                             <label for="ldescription">Description:</label>

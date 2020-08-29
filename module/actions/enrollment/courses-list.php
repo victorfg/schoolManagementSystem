@@ -113,9 +113,9 @@ $row = mysqli_num_rows($result);
                 <div class="justify-content-center margin-top-20">
                     <table width="500", cellpadding=5 callspacing=5 border=1>
                         <tr>
-                            <th>ID</th>
-                            <th>name</th>
-                            <th>description</th>
+                            <th>#</th>
+                            <th>Curso</th>
+                            <th>Descripcion</th>
                             <th>Inicio</th>
                             <th>Fin</th>
                             <th>Activo</th>

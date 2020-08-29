@@ -27,7 +27,7 @@
     }else if($count==1 && $control=="teacher"){
         header("Location:../module/teacher");
     }else if($count==1 && $control=="student"){
-        header("Location:../module/student");
+        header("Location:../module/actions/calendar");
     } else {
         header("Location:../start.php?login=false");
     }

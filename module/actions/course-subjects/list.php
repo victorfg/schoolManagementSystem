@@ -110,11 +110,13 @@ $result = mysqli_query($link, $sql);
 
                 </nav>
                 <!-- End of Topbar -->
+                <?php if($_SESSION['login_type']=='admin'):?>
                 <div class="justify-content-center">
                     <button>
                         <a href=<?php echo "form.php?idCourse=".$id; ?>>Asignar asignatura a curso</a>
                     </button>
                 </div>
+                <?php endif?>
                 <div class="justify-content-center margin-top-20">
                     <table width="500", cellpadding=5 callspacing=5 border=1>
                         <tr>

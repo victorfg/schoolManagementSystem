@@ -119,15 +119,15 @@
                 <div class="justify-content-center margin-top-20">
                     <table  class="text-align-center" width="500", cellpadding=5 callspacing=5 border=1>
                     <tr>
-                        <th>ID</th>
-                        <th>Username</th>
+                        <th>#</th>
+                        <th>Usuario</th>
                         <th>Email</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th>Telephone</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Teléfono</th>
                         <th>Nif</th>
-                        <th>Date registered</th>
-                        <th>Type</th>
+                        <th>Fecha de registro</th>
+                        <th>Tipo</th>
                         <th></th>
                         <th></th>
                     </tr>

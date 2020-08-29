@@ -10,12 +10,21 @@ $idCourse=stripslashes($idCourse);
 
 $specified = !empty($idCourse);
 if($specified) {
-    $sql = "SELECT * FROM enrollment WHERE 
-    id_course= {$idCourse}";
+    $sql = "SELECT
+	enrollment.*,
+	users.name as student_name,
+	courses.name as course_name
+FROM
+	enrollment
+inner join users on
+	users.id = enrollment.id_student
+inner join courses on
+	courses.id_course = enrollment.id_course
+WHERE
+    enrollment.id_course= {$idCourse}";
 }else {
     header("Location: courses-list.php");
 }
-
 $result = mysqli_query($link, $sql);
 $row = mysqli_num_rows($result);
 ?>
@@ -119,17 +128,19 @@ $row = mysqli_num_rows($result);
                 <div class="justify-content-center margin-top-20">
                     <table width="500", cellpadding=5 callspacing=5 border=1>
                         <tr>
-                            <th>ID</th>
-                            <th>ID_student</th>
-                            <th>ID_course</th>
+                            <th>#</th>
+                            <th>Estudiante</th>
+                            <th>Curso</th>
                             <th>Activo</th>
+                            <th></th>
+                            <th></th>
                         </tr>
 
                         <?php while($rows = mysqli_fetch_array($result)): ?>
                             <tr>
                                 <td><?php echo $rows['id_enrollment']; ?></td>
-                                <td><?php echo $rows['id_student']; ?></td>
-                                <td><?php echo $rows['id_course']; ?></td>
+                                <td><?php echo $rows['student_name']; ?></td>
+                                <td><?php echo $rows['course_name']; ?></td>
                                 <td><?php echo $rows['status']; ?></td>
                                 <td> <a href="<?php echo "form.php?id={$rows['id_enrollment']}&idStudent={$rows['id_student']}&idCourse={$rows['id_course']}"; ?>">Modificar</a></td>
                                 <td> <a href=<?php echo "db/delete.php?id={$rows['id_enrollment']}&idCourse={$rows['id_course']}";?>>Borrar</a></td>

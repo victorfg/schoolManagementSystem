@@ -4,7 +4,7 @@ if($_SESSION['login_type']!=='admin' || empty($_SESSION['login_type'])){
     echo "no tienes acceso";
     return;
 }
-$id=$_GET['id_subject'];
+$id=$_GET['id'];
 $check=$_SESSION['login_id'];
 $id=stripslashes($id);
 
@@ -15,7 +15,7 @@ if($specified) {
 }
 
 $result = mysqli_query($link, $sql);
-$rows=mysqli_fetch_array($result);
+$rowSubject=mysqli_fetch_array($result);
 
 
 $sqlTeacher = "SELECT * FROM users WHERE 
@@ -23,7 +23,24 @@ type = 'teacher'";
 
 
 $resultTeacher = mysqli_query($link, $sqlTeacher);
-$rowsTeachers=mysqli_fetch_array($resultTeacher);
+//$rowsTeachers=mysqli_fetch_array($resultTeacher);
+$colors=['White',
+    'Silver',
+    'Gray',
+    'Black',
+    'Red',
+    'Maroon',
+    'Yellow',
+    'Olive',
+    'Lime',
+    'Green',
+    'Aqua',
+    'Teal',
+    'Blue',
+    'Navy',
+    'Fuchsia',
+    'Purple'
+];
 
 
 ?>
@@ -119,18 +136,27 @@ $rowsTeachers=mysqli_fetch_array($resultTeacher);
             <!-- End of Topbar -->
             <div id="content" class="justify-content-center">
                 <form action="../subjects/db/insertOrUpdate.php" method="post">
+                    <input class="display-none" type="text" id="lid" name="lid" value="<?php echo $rowSubject['id_subject']; ?>"><br><br>
+                    <label for="lname">Profesor:</label>
                     <select id="lidteacher" name="lidteacher">
                         <?php while($rowsTeachers = mysqli_fetch_array($resultTeacher)): ?>
                             <?php
-                            $selected = $rowsTeachers['id']==$result['id_teacher']?"selected='selected'":'';
+                            $selected = $rowsTeachers['id']==$rowSubject['id_teacher']?"selected='selected'":'';
                             ?>
                             <option value="<?php echo $rowsTeachers['id']; ?>" <?php echo $selected; ?>><?php echo $rowsTeachers['username']; ?></option>
                         <?php endwhile; ?>
                     </select><br><br>
                     <label for="lname">Nombre:</label>
-                    <input type="text" id="lname" name="lname"><br><br>
+                    <input type="text" id="lname" name="lname" value="<?php echo $rowSubject['name']; ?>"><br><br>
                     <label for="lcolor">Color:</label>
-                    <input type="text" id="lcolor" name="lcolor"><br><br>
+                    <select id="lcolor" name="lcolor">
+                        <?php foreach($colors as $color): ?>
+                            <?php
+                            $selected = $rowSubject['color']==$color?"selected='selected'":'';
+                            ?>
+                            <option value="<?php echo $color; ?>" <?php echo $selected; ?>><?php echo $color; ?></option>
+                        <?php endforeach; ?>
+                    </select><br><br>
                     <input type="submit" value="Crear">
                 </form>
             </div>

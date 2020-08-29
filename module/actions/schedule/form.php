@@ -29,6 +29,9 @@ if(empty($idCourse)){
 }
 
 $sqlSubjects = "SELECT * FROM subjects";
+if($_SESSION['login_type']==='teacher'){
+    $sqlSubjects = $sqlSubjects." where id_teacher={$_SESSION['user_id']}";
+}
 
 $resultSubject = mysqli_query($link, $sqlSubjects);
 

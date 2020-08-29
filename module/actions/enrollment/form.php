@@ -28,14 +28,14 @@
 
 
     $resultStudent = mysqli_query($link, $sqlStudents);
-    $rowsStudents=mysqli_fetch_array($resultStudent);
+    //$rowsStudents=mysqli_fetch_array($resultStudent);
 
 
     $sqlCourses = "SELECT * FROM courses";
 
 
     $resultCourses = mysqli_query($link, $sqlCourses);
-    $rowsCourses=mysqli_fetch_array($resultCourses);
+    //$rowsCourses=mysqli_fetch_array($resultCourses);
 ?>
 
 
@@ -133,6 +133,7 @@
                     <form action="../enrollment/db/insertOrUpdate.php" method="post">
                         <label class="display-none" for="lid">id:</label>
                         <input class="display-none" type="text" id="lid" name="lid" value="<?php echo $rows['id_enrollment']; ?>"><br><br>
+                        <label for="lid">Curso:</label>
                         <select id="lidcourse" name="lidcourse">
                             <?php while($rowsCourses = mysqli_fetch_array($resultCourses)): ?>
                                 <?php
@@ -141,6 +142,7 @@
                                 <option value="<?php echo $rowsCourses['id_course']; ?>"><?php echo $rowsCourses['name']; ?></option>
                             <?php endwhile; ?>
                         </select><br><br>
+                        <label for="lid">Estudiante:</label>
                         <select id="lidstudent" name="lidstudent">
                             <?php while($rowsStudents = mysqli_fetch_array($resultStudent)): ?>
                                 <?php
