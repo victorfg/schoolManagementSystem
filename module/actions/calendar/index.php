@@ -4,21 +4,93 @@ if(empty($_SESSION['user_id'])){
     echo "necesitas hacer login";
     return;
 }
-$week=$_GET['week'];
+$week=$_GET['lweek'];
 $week=stripslashes($week);
 if(empty($week)) {
 $week = date('Y').'-W'.date('W');
 }
+$weekFilter = $week;
+$year = explode('-',$week)[0];
+$week = str_replace('W','',explode('-',$week)[1]);
+$week_start_date = (new DateTime())->setISODate($year, $week);
+$week_start_date->setTime(0, 0,0,0);
+$week_end_date = (new DateTime())->setISODate($year, $week,7);
+$week_end_date->setTime(0, 0,0,0);
 
-$sql = "select * from subjects sb
-inner join schedule s on s.id_subject = sb.id_subject 
-inner join courses c on s.id_course = c.id_course 
-inner join course_subjects cs on cs.id_course = s.id_course 
-inner join enrollment e on e.id_course = s.id_course 
-where id_student =".$_SESSION['user_id'];
+$sql = "select
+		sb.id_subject,
+	sb.name as subject_name,
+	sb.color as subject_color,
+	s.day scheduled_days,
+	s.time_start,
+	s.time_end,
+	c.name as course_name,
+	c.date_start,
+	c.date_end
+from
+	subjects as sb
+inner join schedule s on
+	s.id_subject = sb.id_subject
+inner join courses c on
+	s.id_course = c.id_course
+inner join course_subjects cs on
+	cs.id_course = s.id_course
+	and cs.id_subject = s.id_subject
+inner join enrollment e on
+	e.id_course = s.id_course
+where
+    c.active = 1
+    and ('".$week_start_date->format('Y-m-d')."' >= c.date_start and '".$week_start_date->format('Y-m-d')."' <=  c.date_end
+	or '".$week_end_date->format('Y-m-d')."' >= c.date_start and '".$week_end_date->format('Y-m-d')."' <= c.date_end
+	or c.date_start >= '".$week_start_date->format('Y-m-d')."' and c.date_start <= '".$week_end_date->format('Y-m-d')."'
+	or c.date_end >= '".$week_start_date->format('Y-m-d')."' and c.date_end <='".$week_end_date->format('Y-m-d')."') 
+	and e.id_student = ".$_SESSION['user_id']." 
+	order by s.time_start asc";
 
 $result = mysqli_query($link, $sql);
-$rows=mysqli_fetch_array($result);
+$rows = array();
+while($r = mysqli_fetch_assoc($result)) {
+    $rows[] = $r;
+}
+$calendar = ['m'=>[],'t'=>[],'w'=>[],'r'=>[],'f'=>[],'s'=>[],'u'=>[]];
+$dayNumber = ['m'=>1,'t'=>2,'w'=>3,'r'=>4,'f'=>5,'s'=>6,'u'=>7];
+
+try {
+    foreach($rows as $row){
+        if(empty($row)){
+            continue;
+        }
+        $days = explode("|",$row['scheduled_days']);
+        foreach($days as $day){
+            $gendate = new DateTime();
+            $gendate->setISODate($year,$week,$dayNumber[$day]); //year , week num , day
+            $gendate->setTime(0, 0,0,0);
+            $course_start_date = DateTime::createFromFormat('Y-m-d', $row['date_start']);
+            $course_start_date->setTime(0, 0,0,0);
+            $course_end_date = DateTime::createFromFormat('Y-m-d', $row['date_end']);
+            $course_end_date->setTime(0, 0,0,0);
+            $data = null;
+            $curseInProgress = $gendate>=$course_start_date & $gendate<=$course_end_date;
+            if($curseInProgress){
+                $data = [
+                    'subject_id'=>$row['id_subject'],
+                    'subject_name'=>$row['subject_name'],
+                    'subject_color'=>$row['subject_color'],
+                    'course_name'=>$row['course_name'],
+                    'time_start'=>$row['time_start'],
+                    'time_end'=>$row['time_end'],
+                ];
+            }
+            $calendar[$day][] = [
+                'date'=>$gendate->format('d-m-Y'),
+                'data'=>$data
+            ];
+        }
+    }
+}catch(Exception $ex){
+
+}
+
 if(empty($idSubject)){
     $idSubject = $rows['id_subject'];
 }
@@ -137,192 +209,153 @@ $resultCourses  = mysqli_query($link, $sqlCourses);
       <!-- End of Topbar -->
       <div class="justify-content-center">
           <div class="cd-schedule margin-top-lg margin-bottom-lg js-cd-schedule">
-              <form action="../schedule/db/insertOrUpdate.php" method="post" style="margin-left: 61px;margin-bottom: 5px;">
-                  <input type="week" id="lweek" name="lweek" value="<?php echo $week; ?>">
+              <form method="get" style="margin-left: 61px;margin-bottom: 5px;">
+                  <input type="week" id="lweek" name="lweek" value="<?php echo $weekFilter; ?>">
                   <input type="submit" value="Filtrar">
               </form>
                   <div class="cd-schedule__events">
                       <ul>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Lunes</span></div>
-
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Lunes</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['m'][0]['date'];?></span>
+                                  </ul>
+                              </div>
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="14:00" data-end="15:15"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['m'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Martes</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Martes</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['t'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                          <em class="cd-schedule__name">Restorative Yoga</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['t'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Miercoles</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Miercoles</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['w'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                          <em class="cd-schedule__name">Restorative Yoga</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['w'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Jueves</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Jueves</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['r'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                                          <em class="cd-schedule__name">Restorative Yoga</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['r'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
 
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Viernes</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Viernes</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['f'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['f'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Sábado</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Sábado</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['s'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['s'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
                           <li class="cd-schedule__group">
-                              <div class="cd-schedule__top-info"><span>Domingo</span></div>
+                              <div class="cd-schedule__top-info">
+                                  <ul>
+                                      <li><span>Domingo</span></li>
+                                      <span style="font-size:10px"><?php echo $calendar['u'][0]['date'];?></span>
+                                  </ul>
+                              </div>
 
                               <ul>
-                                  <li class="cd-schedule__event">
-                                      <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                                          <em class="cd-schedule__name">Rowing Workout</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                                          <em class="cd-schedule__name">Abs Circuit</em>
-                                      </a>
-                                  </li>
-
-                                  <li class="cd-schedule__event">
-                                      <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                                          <em class="cd-schedule__name">Yoga Level 1</em>
-                                      </a>
-                                  </li>
+                                  <?php foreach ($calendar['u'] as $event): ?>
+                                      <?php if(is_null($event['data'])){continue;} ?>
+                                      <li class="cd-schedule__event">
+                                          <a style="background-color: <?php echo $event['data']['subject_color'];?>" data-start="<?php echo $event['data']['time_start'];?>" data-end="<?php echo $event['data']['time_end'];?>" data-content="event-abs-circuit" data-event="event-1" >
+                                              <p style="color:white;font-size:10px;"><?php echo $event['data']['course_name'];?></p>
+                                              <em class="cd-schedule__name"><?php echo $event['data']['subject_name'];?></em>
+                                          </a>
+                                      </li>
+                                  <?php endforeach; ?>
                               </ul>
                           </li>
                       </ul>
