@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16cacf8b-3fb8-4a13-b29a-39ff8bdfc698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/course-subjects/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/course-subjects/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/courses/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/courses/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/courses-list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/courses-list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/enrollment/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/enrollment/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/schedule/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/schedule/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/subjects/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/subjects/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/actions/users/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/users/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/mysqlConection.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/mysqlConection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/actions/calendar/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/module/actions/calendar/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module/actions/calendar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -68,11 +55,11 @@
       <recent name="$PROJECT_DIR$/source/Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/module/actions/calendar" />
       <recent name="$PROJECT_DIR$/module/actions" />
       <recent name="$PROJECT_DIR$/module/actions/courseSubjects" />
       <recent name="$PROJECT_DIR$/module/actions/enrollment" />
-      <recent name="$PROJECT_DIR$/module/actions/courses" />
     </key>
   </component>
   <component name="RunManager">
@@ -106,7 +93,7 @@
       <workItem from="1597667874175" duration="8444000" />
       <workItem from="1597751060727" duration="8718000" />
       <workItem from="1598514132506" duration="199000" />
-      <workItem from="1598693398894" duration="30346000" />
+      <workItem from="1598693398894" duration="30653000" />
     </task>
     <servers />
   </component>

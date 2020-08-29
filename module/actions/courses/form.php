@@ -146,7 +146,7 @@ $rows=mysqli_fetch_array($result);
                 <div class="modal-body">Selecciona "Logout" si quieres salir de la sesión.</div>
                 <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
+                <a class="btn btn-primary" href="/logout.php">Logout</a>
                 </div>
             </div>
             </div>
