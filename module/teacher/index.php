@@ -34,15 +34,7 @@
             </div>
             <div class="sidebar-brand-text mx-3">School System</div>
         </a>
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Horarios</span></a>
-        </li>
+        <?php include '../menu-left.php';?>
     </ul>
     <!-- End of Sidebar -->
 
