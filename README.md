@@ -2,6 +2,8 @@
 
 It is a simple PHP & MySQL application that you can manage a school.
 
+[Video presentation (spanish)](http://vfernandez.me/uoc/video_php_mysql_school_system.mp4)
+
 ---
 
 ### Features
